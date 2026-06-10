@@ -1,4 +1,4 @@
-const API = "http://localhost:3000/properties";
+const API ="https://kenya-rentals-project.onrender.com/properties";
 
 let allProperties = [];
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
