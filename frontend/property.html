@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Property Details</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">🏠 Kenya Rentals</div>
+  </nav>
+
+  <div id="propertyDetails" class="details"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    fetch("http://localhost:3000/properties")
+      .then(res => res.json())
+      .then(data => {
+        const property = data.find(p => p.id == id);
+
+        document.getElementById("propertyDetails").innerHTML = `
+          <div class="detail-card">
+
+            <img src="${property.image}" />
+
+            <h1>${property.title}</h1>
+
+            <p>📍 ${property.location}</p>
+
+            <h2>KSH ${Number(property.price).toLocaleString()}</h2>
+
+            <button onclick="alert('Contact feature coming soon!')">
+              Contact Agent
+            </button>
+
+          </div>
+        `;
+      });
+  </script>
+
+</body>
+</html>
